@@ -74,6 +74,8 @@ namespace Webscraper_Devops
             var bestandsnaam = Console.ReadLine();
             bestandsnaam += ".csv";
 
+
+            int counter = 0;
             foreach (var video in videos)
             {
                 var videotitle = video.FindElement(By.Id("title-wrapper")).Text;
@@ -86,7 +88,13 @@ namespace Webscraper_Devops
                 Console.WriteLine("Uploader: " + videouploader);
                 Console.WriteLine("Link: " + videolink);
 
-                Writeyttocsv(videotitle, videouploader, videoviews, videolink, bestandsnaam);
+                
+                if (counter < 5)
+                {
+                    Writeyttocsv(videotitle, videouploader, videoviews, videolink, bestandsnaam);
+                }
+                counter += 1;
+
             }
             driver.Close();
           
